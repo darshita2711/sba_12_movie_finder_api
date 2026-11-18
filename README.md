@@ -42,7 +42,7 @@ and retrieves movie details using the OMDb API.
 
    npm run dev
 
-The server runs at http://localhost:3001.
+The server runs at http://localhost:3000.
 
 ## API Endpoints
 
