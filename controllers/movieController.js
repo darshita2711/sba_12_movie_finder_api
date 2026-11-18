@@ -6,7 +6,7 @@ export const searchMovies = async (req, res) => {
         // get movie from title
         const title = req.query.title;
 
-        const page = req.query.page || 1;
+        const page = Number(req.query.page) || 1;
 
         if(!title){
             return res.status(400).json({
@@ -20,7 +20,7 @@ export const searchMovies = async (req, res) => {
             });
         }
         // Call OMDb API using Axios
-        const response = await axios.get('https://www.omdbapi.com/', {
+        const response = await axios.get(process.env.API_URL, {
             params: {
                 s: title,
                 page: page,
@@ -57,7 +57,7 @@ export const getMovieDetails = async (req, res) => {
 
 
         // Call OMDb API
-        const response = await axios.get('https://www.omdbapi.com/', {
+        const response = await axios.get(process.env.API_URL, {
             params: {
                 i: id,
                 apikey: process.env.OMDB_API_KEY
