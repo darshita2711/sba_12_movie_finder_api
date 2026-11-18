@@ -40,6 +40,13 @@ export const getMovieDetails = async (req, res) => {
         // Get IMDb ID from URL
         const id = req.params.id;
 
+        if (!id || id.trim() === '') {
+            return res.status(400).json({
+                error: 'Movie ID is required'
+            });
+        }
+
+
         // Call OMDb API
         const response = await axios.get('https://www.omdbapi.com/', {
             params: {
