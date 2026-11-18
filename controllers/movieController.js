@@ -13,6 +13,12 @@ export const searchMovies = async (req, res) => {
                 error:'Title is requied'
             });
         }
+
+        if (!Number.isInteger(page) || page < 1) {
+            return res.status(400).json({
+                error: 'Page must be a positive number'
+            });
+        }
         // Call OMDb API using Axios
         const response = await axios.get('https://www.omdbapi.com/', {
             params: {
