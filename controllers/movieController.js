@@ -6,6 +6,8 @@ export const searchMovies = async (req, res) => {
         // get movie from title
         const title = req.query.title;
 
+        const page = req.query.page || 1;
+
         if(!title){
             return res.status(400).json({
                 error:'Title is requied'
@@ -15,6 +17,7 @@ export const searchMovies = async (req, res) => {
         const response = await axios.get('https://www.omdbapi.com/', {
             params: {
                 s: title,
+                page: page,
                 apikey: process.env.OMDB_API_KEY
             }
         });
