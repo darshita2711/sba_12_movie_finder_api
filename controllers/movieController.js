@@ -18,7 +18,11 @@ export const searchMovies = async (req, res) => {
                 apikey: process.env.OMDB_API_KEY
             }
         });
-
+        if (response.data.Response === 'False') {
+            return res.status(404).json({
+            error: response.data.Error
+         });
+        }
         // Send movie results
         res.json(response.data);
     }catch (error) {
