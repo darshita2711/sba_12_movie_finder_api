@@ -16,7 +16,6 @@ app.get('/', (req, res) => {
     res.send('Movie Finder API is running!');
 });
 
-
 // Connect movie routes
 app.use('/api', movieRoutes);
 // Start server
